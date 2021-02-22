@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
+import { IProperty } from '../IProperty.interface';
+
 
 
 @Component({
@@ -8,7 +10,8 @@ import { HousingService } from 'src/app/services/housing.service';
   styleUrls: ['./property-list.component.css']
 })
 export class PropertyListComponent implements OnInit {
-  Properties: any ;
+ // Properties: Array<any> ;
+  Properties: Array<IProperty> ;
   constructor(private housingService:HousingService ) { }
 
   ngOnInit(): void {
@@ -22,14 +25,7 @@ export class PropertyListComponent implements OnInit {
                //This error condition is used in when api server is down and sometimes database is down so thats why use the conditions
              }
     );
-  //   this.http.get('data/properties.json').subscribe(
-  //     data =>{
 
-  //       this.Properties=data;
-  //       console.log(data)
-  //     }
-  //   );
-  // }
 
 }
 }
