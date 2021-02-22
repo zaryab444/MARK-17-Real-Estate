@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HousingService } from 'src/app/services/housing.service';
+
 
 @Component({
   selector: 'app-property-list',
@@ -6,54 +8,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property-list.component.css']
 })
 export class PropertyListComponent implements OnInit {
-  Properties: Array<any> = [
-    {
-    "Id":1,
-    "Name": "Zaryab House",
-    "Type":"House",
-    "Price": 1200000
-  },
-  {
-    "Id":2,
-    "Name": "Shahroz House",
-    "Type":"Plot",
-    "Price": 2000000
-  },
-  {
-    "Id":3,
-    "Name": "Ahsan House",
-    "Type":"Flat",
-    "Price": 1300000
-  },
-  {
-    "Id":4,
-    "Name": "Minaj House",
-    "Type":"bugalow",
-    "Price": 2400000
-  },
-
-
-  {
-    "Id":5,
-    "Name": "Minaj House",
-    "Type":"bugalow",
-    "Price": 2400000
-  },
-
-
-  {
-    "Id":6,
-    "Name": "Minaj House",
-    "Type":"bugalow",
-    "Price": 2400000
-  },
-
-
-]
-
-  constructor() { }
+  Properties: any ;
+  constructor(private housingService:HousingService ) { }
 
   ngOnInit(): void {
-  }
 
+    this.housingService.getAllProperties().subscribe(
+      data =>{
+             this.Properties=data;
+               console.log(data);
+             }, error =>{
+               console.log(error);
+               //This error condition is used in when api server is down and sometimes database is down so thats why use the conditions
+             }
+    );
+  //   this.http.get('data/properties.json').subscribe(
+  //     data =>{
+
+  //       this.Properties=data;
+  //       console.log(data)
+  //     }
+  //   );
+  // }
+
+}
 }
