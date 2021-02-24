@@ -10,13 +10,14 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
-
+import {PagenotfoundComponent} from './pagenotfound/pagenotfound.component';
 const appRoutes : Routes = [
   {path:'', component:PropertyListComponent},
 {path: 'add-property', component:AddPropertyComponent},
 {path: 'rent-property', component:PropertyListComponent},
 
-{path: 'property-detail/:id', component:PropertyDetailComponent}
+{path: 'property-detail/:id', component:PropertyDetailComponent},
+{path:'**', component:PagenotfoundComponent}
 ]
 
 @NgModule({
@@ -27,6 +28,7 @@ const appRoutes : Routes = [
     NavBarComponent,
     AddPropertyComponent,
     PropertyDetailComponent,
+    PagenotfoundComponent
 
 
   ],
